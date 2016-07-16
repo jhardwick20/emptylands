@@ -71,7 +71,7 @@ scrBlocks()
 audio_play_sound(asset_get_index(blocksound), 1, false);
 }
 } else
-if !place_empty(x,y) and mouse_check_button_pressed(mb_left){
+if !place_empty(x,y) and mouse_check_button_pressed(mb_left) and Menu.mode=0{
 instance_create(x,y,Destroyer)
 } 
 </string>

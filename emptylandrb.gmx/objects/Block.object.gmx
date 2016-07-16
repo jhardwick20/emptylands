@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>Entity</parentName>
-  <maskName>mskBlock</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -31,9 +31,10 @@ image_speed=0.1
 blockhealth=2
 partindex=part_system_create()
 blockcolor=c_black
+blockentity=0
 var spritename = asset_get_index("sprBlock" + string(blockid));
 sprite_index=spritename
-buildslot=0
+btime=1
 part_system_position(partindex, x, y);
 /*
 //Turtle Seek!
@@ -125,6 +126,50 @@ if blockid="Chest"{
 instance_create(x,y,Chest)
 instance_destroy()
 }
+
+if blockid="FloorGen"{
+instance_create(x,y,FloorGen)
+instance_destroy()
+}
+
+if blockid="Floor"{
+with instance_create(x,y,Floor){direction=other.direction sprite_index=asset_get_index("sprFloor"+string(direction)) floortype=direction}
+instance_destroy()
+}
+
+if blockid="Wall" and btime=1{
+var cardinal_index = round( point_direction( Player.x, Player.y, mouse_x, mouse_y ) / 90 );
+var cardinal_angle = 90 * round( point_direction( Player.x, Player.y, mouse_x, mouse_y ) / 90 );
+direction=cardinal_angle
+btime=0
+}
+
+image_angle=direction
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="Block">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -194,29 +239,6 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>blockhealth-=2
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="Block">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -27,6 +27,7 @@
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\sprEPickup</sprite>
+      <sprite>sprites\sprHealthBar</sprite>
       <sprite>sprites\sprSlot</sprite>
       <sprite>sprites\sprCursor</sprite>
     </sprites>
@@ -47,8 +48,16 @@
       <sprite>sprites\sprEnemyManWalk</sprite>
       <sprite>sprites\mskNPC</sprite>
     </sprites>
+    <sprites name="Floors">
+      <sprite>sprites\sprFloor1</sprite>
+      <sprite>sprites\sprFloor2</sprite>
+      <sprite>sprites\sprFloor3</sprite>
+      <sprite>sprites\sprBlockFloorGen</sprite>
+      <sprite>sprites\sprBlockFloor</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
+    <background>background\bgDirt</background>
     <background>background\bgSand</background>
   </backgrounds>
   <paths name="paths"/>
@@ -58,25 +67,33 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\fontSM</font>
   </fonts>
   <objects name="objects">
     <object>objects\Player</object>
     <object>objects\Cursor</object>
-    <object>objects\Control</object>
-    <object>objects\Block</object>
-    <object>objects\Slots</object>
     <object>objects\Arrow</object>
     <object>objects\Swing</object>
     <object>objects\Destroyer</object>
-    <object>objects\Turtle</object>
-    <object>objects\ItemPickup</object>
-    <object>objects\Chest</object>
-    <object>objects\Water</object>
-    <object>objects\EnemyMan</object>
-    <object>objects\bullet</object>
-    <object>objects\null</object>
-    <object>objects\Entity</object>
-    <object>objects\Menu</object>
+    <objects name="Other">
+      <object>objects\Control</object>
+      <object>objects\bullet</object>
+      <object>objects\null</object>
+      <object>objects\Entity</object>
+      <object>objects\Menu</object>
+      <object>objects\FloorGen</object>
+      <object>objects\Slots</object>
+      <object>objects\ItemPickup</object>
+      <object>objects\TurfGen</object>
+    </objects>
+    <objects name="Entities">
+      <object>objects\Block</object>
+      <object>objects\Chest</object>
+      <object>objects\Water</object>
+      <object>objects\Turtle</object>
+      <object>objects\EnemyMan</object>
+      <object>objects\Floor</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
