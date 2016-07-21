@@ -47,6 +47,22 @@ blocksound="soundSolid"
 blockentity=1
 }
 
+if blockid="BowMan"{
+blockhealth=-1
+solid=false
+blockcolor=make_colour_rgb(90, 113, 45);
+blocksound="soundSolid"
+blockentity=1
+}
+
+if blockid="Placeholder"{
+blockhealth=-1
+solid=true
+blockcolor=make_colour_rgb(0, 0, 0);
+blocksound="soundSolid"
+blockentity=0
+}
+
 if blockid="Water"{
 blockhealth=-1
 solid=false

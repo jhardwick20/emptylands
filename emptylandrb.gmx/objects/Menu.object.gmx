@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>mode=1
+ini_open(working_directory+"emptylands.ini")
+if ini_read_real("save","lastv",0)=1{load=ini_read_string("save","last","") room_next(1)}
 </string>
           </argument>
         </arguments>
@@ -51,13 +53,13 @@
             <string>if room=0 {
 draw_set_font(font0)
 draw_set_color(c_white)
-draw_text(0,0,"EmptyLand Construct SCP")
+draw_text(0,0,"EmptyLand Adventure Test")
 draw_text(0,16,"1-8 to Choose Blocks")
 draw_text(0,32,"Left Click to Place Blocks/Remove Blocks")
 draw_text(0,48,"Right Click to Use Item")
 draw_text(0,64,"Middle Click to Move in Direction of Cursor")
-draw_text(0,80,"S to Save Maps ; O to Open Maps")
-draw_text(130,112,"Press Enter to continue")
+draw_text(0,80,"S to Save Maps inGame. Press L to Load a Map Now")
+draw_text(130,112,"Press Enter to Create New Map")
 if mode=0 {draw_text(130,128,"Current Mode: Construct")}
 if mode=1 {draw_text(130,128,"Current Mode: Adventure!")}
 draw_text(130,144,"(Up/Down arrows to Choose)")
@@ -74,6 +76,35 @@ mode=0
 if mode=-1 {
 mode=1
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if room=0
+room_goto_next()
+
+if mode=0{room_set_background(1, 1, 1, 0, bgSand, 0, 0, 1, 1, 0, 0, 1)}
+
+if mode=1{room_set_background(1, 0, 1, 0, bgDirt, 0, 0, 1, 1, 0, 0, 1)}
+load=get_string("Enter a Map Name! (No Spaces. Cancel to create new)","MyGreatMap");
 </string>
           </argument>
         </arguments>
@@ -102,6 +133,8 @@ room_goto_next()
 if mode=0{room_set_background(1, 1, 1, 0, bgSand, 0, 0, 1, 1, 0, 0, 1)}
 
 if mode=1{room_set_background(1, 0, 1, 0, bgDirt, 0, 0, 1, 1, 0, 0, 1)}
+
+load=""
 </string>
           </argument>
         </arguments>

@@ -24,6 +24,7 @@
       <sprite>sprites\sprBlockTurtle</sprite>
       <sprite>sprites\sprBlockEnemyMan</sprite>
       <sprite>sprites\mskBlock</sprite>
+      <sprite>sprites\sprBlockPlaceholder</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\sprEPickup</sprite>
@@ -37,21 +38,24 @@
     <sprites name="Items">
       <sprite>sprites\sprItemArrow</sprite>
       <sprite>sprites\sprItemAxe</sprite>
+      <sprite>sprites\sprItemBow</sprite>
       <sprite>sprites\sprSwing</sprite>
       <sprite>sprites\sprItemFlesh</sprite>
     </sprites>
     <sprites name="NPCs">
       <sprite>sprites\sprTurtle</sprite>
+      <sprite>sprites\sprTurtleHurt</sprite>
       <sprite>sprites\sprEvilTurtle</sprite>
       <sprite>sprites\sprEnemyMan</sprite>
+      <sprite>sprites\sprRedManIdle</sprite>
       <sprite>sprites\sprEnemyManHurt</sprite>
+      <sprite>sprites\sprRedManHurt</sprite>
       <sprite>sprites\sprEnemyManWalk</sprite>
+      <sprite>sprites\sprRedManWalk</sprite>
+      <sprite>sprites\sprEnemyArrow</sprite>
       <sprite>sprites\mskNPC</sprite>
     </sprites>
     <sprites name="Floors">
-      <sprite>sprites\sprFloor1</sprite>
-      <sprite>sprites\sprFloor2</sprite>
-      <sprite>sprites\sprFloor3</sprite>
       <sprite>sprites\sprBlockFloorGen</sprite>
       <sprite>sprites\sprBlockFloor</sprite>
     </sprites>
@@ -59,6 +63,7 @@
   <backgrounds name="background">
     <background>background\bgDirt</background>
     <background>background\bgSand</background>
+    <background>background\tilesFloor</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -78,7 +83,7 @@
     <objects name="Other">
       <object>objects\Control</object>
       <object>objects\bullet</object>
-      <object>objects\null</object>
+      <object>objects\npc</object>
       <object>objects\Entity</object>
       <object>objects\Menu</object>
       <object>objects\FloorGen</object>
@@ -90,9 +95,11 @@
       <object>objects\Block</object>
       <object>objects\Chest</object>
       <object>objects\Water</object>
-      <object>objects\Turtle</object>
       <object>objects\EnemyMan</object>
       <object>objects\Floor</object>
+      <object>objects\BowMan</object>
+      <object>objects\EnemyArrow</object>
+      <object>objects\Turtle</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -65,6 +65,7 @@ x=x+floordir
 with instance_create(x,y,Floor){
 floortype=other.floortype
 direction=other.floortype
+alarm[1]=20
 }
 }
 if ud=0 and place_empty(x,y+floordir){
@@ -72,6 +73,7 @@ y=y+floordir
 with instance_create(x,y,Floor){
 floortype=other.floortype
 direction=other.floortype
+alarm[1]=20
 }
 }
 areasize-=1

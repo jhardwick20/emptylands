@@ -25,18 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize()
+            <string>if Menu.load != ""{
+openfname=working_directory+Menu.load+".elm"
+ini_open(openfname);
+random_set_seed(ini_read_real("save","seed",0));
+firstopenname=Menu.load
+}
+if Menu.load = "" {randomize()
+firstopenname=""
+openfname=""}
 blockindex=0
-version="0.011"
+version="0.012"
 bn=0
 savetime=0
+firstsavename=""
 blockid="Wall"
-itemid="Axe"
-firstsavefname=""
+itemid="Arrow"
 savefname=""
-openfname=""
 loaded=0
-
+reopen=0
 if Menu.mode=0{
 repeat(20) {
 with instance_create(random(room_width),random(room_height),Block){
@@ -49,6 +56,8 @@ scrBlocks()
 if Menu.mode=1{
 repeat(10){ instance_create(irandom(room_width),irandom(room_height),TurfGen)}
 }
+
+advsave=1
 </string>
           </argument>
         </arguments>
@@ -110,16 +119,17 @@ firstsavename=get_string("Choose a Map Name! (No Spaces)","MyGreatMap");
 savefname=working_directory+firstsavename+".elm"
 }
 //delete if exists (overwrite)
-if firstsavefname!=""{
+if firstsavename!=""{
 if file_exists(savefname){
 file_delete(savefname)
 }}
 //If it returns something
-if firstsavefname!="" and savetime=0 and !file_exists(savefname){
+if firstsavename!="" and savetime=0 and !file_exists(savefname){
 ini_open(savefname)
 //Block Saving
 blockindex=instance_number(Entity);
 ini_write_real("blocks","index",blockindex)
+ini_write_real("save","seed",random_get_seed())
 while (blockindex+1)&gt;0{
 blockinid[blockindex]=instance_find(Entity,blockindex)
 blockindex-=1
@@ -132,25 +142,35 @@ ini_write_string("blocks", "block"+string(blockindex),blocksavestring)
 blockindex-=1
 }
 ini_close()
-savefname=""
+firstsavename=""
 }
 
 //Open Map Dialog!
-if keyboard_check_pressed(ord("O")){
+/*if keyboard_check_pressed(ord("O")){
 //openfname=get_open_filename_ext(".elm", "MyGreatMap.elm", working_directory, "Open Map");
-firstopenname=get_string("Enter a Map Name! (No Spaces)",firstsavename);
+firstopenname=get_string("Enter a Map Name! (No Spaces)","MyGreatMap");
 openfname=working_directory+firstopenname+".elm"
 }
+*/
 //If it returns something
-if openfname!=""{
+if firstopenname!=""{
 repeat(instance_number(Entity)){
 with Entity{
 instance_destroy()
 }
 }
+if Menu.load=""{
+tiles=tile_get_ids();
+ttgo=tile_get_count()-1
+ttc=tile_get_count()
+repeat(ttc){
+tile_delete(tiles[ttgo])
+ttgo-=1
+}}
 ini_open(openfname);
 //blockload
 blockindex=ini_read_real("blocks","index",0)
+random_set_seed(ini_read_real("save","seed",0));
 while blockindex&gt;0{
 //start parsecode
 var msg = ini_read_string("blocks","block"+string(blockindex),0);
@@ -182,39 +202,11 @@ scrBlocks()
 }
 blockindex-=1
 }
-/* NPC load
-npcindex=ini_read_real("npcs","index",0)
-while npcindex&gt;0{
-//start parsecode
-var msg = ini_read_string("npcs","npc"+string(npcindex),0);
-var splitBy = "!"; //string to split the first string by
-var slot = 0;
-var splits; //array to hold all splits
-var str2 = ""; //var to hold the current split we're working on building
 
-var i;
-for (i = 1; i &lt; (string_length(msg)+1); i++) {
-    var currStr = string_copy(msg, i, 1);
-    if (currStr == splitBy) {
-        splits[slot] = str2; //add this split to the array of all splits
-        slot++;
-        str2 = "";
-    } else {
-        str2 = str2 + currStr;
-        splits[slot] = str2;
-    }
-}
-//End parsecode
-with instance_create(real(splits[1]),real(splits[2]),asset_get_index(splits[0])){
-direction=splits[3]
-}
-npcindex-=1
-}
-*/
 }
 if blockindex&lt;=0 and openfname!=""
 {
-openfname=""
+firstopenname=""
 }
 
 
@@ -230,7 +222,37 @@ instance_create(Player.x,Player.y,Swing)
 audio_play_sound(soundSwing,1,false)
 }
 
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ini_open(working_directory+"emptylands.ini")
+ini_write_string("save","last",firstopenname)
+if reopen=1{
+ini_write_real("save","lastv",1)
+}
+if reopen=0{
+ini_write_real("save","lastv",0)
+}
+ini_close()
 </string>
           </argument>
         </arguments>
