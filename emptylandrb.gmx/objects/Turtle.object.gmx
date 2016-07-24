@@ -59,6 +59,7 @@ itemspritename = asset_get_index("sprItem" + itemid);
 sprite_index=itemspritename
 }
 }}
+score+=5
 </string>
           </argument>
         </arguments>

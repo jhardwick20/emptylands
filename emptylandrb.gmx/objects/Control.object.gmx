@@ -35,7 +35,7 @@ if Menu.load = "" {randomize()
 firstopenname=""
 openfname=""}
 blockindex=0
-version="0.012"
+version="0.013"
 bn=0
 savetime=0
 firstsavename=""
@@ -108,8 +108,8 @@ blockid="EnemyMan"
 }}
 
 //Debug For Adventure
-if keyboard_check_pressed(ord("F")){
-blockid="FloorGen"
+if keyboard_check_pressed(ord("D")){
+blockid="DungeonGen"
 }
 
 //Save Map Dialog!
@@ -222,6 +222,11 @@ instance_create(Player.x,Player.y,Swing)
 audio_play_sound(soundSwing,1,false)
 }
 
+if mouse_check_button_pressed(mb_right) and itemid="Flesh" and Player.myhealth&lt;Player.maxhealth{
+Player.myhealth+=2
+itemid="Dust"
+score+=10
+}
 </string>
           </argument>
         </arguments>
@@ -282,7 +287,6 @@ draw_text(0,0,"EmptyLand Adventure Test "+string(version))
 draw_text(32,256,string(blockid))
 draw_text(400,256,string(itemid))
 if Menu.mode=1{
-//HEalth hUD - stolen from Wasteland Kings (its was opensource on Humble)
 draw_sprite(sprHealthBar,0,20,20)
 draw_set_color(c_black)
 draw_rectangle(106,23,106*(Player.myhealth/Player.maxhealth),31,0)
@@ -292,8 +296,11 @@ draw_set_color(c_black)
 draw_text(67,24,string(Player.myhealth)+"/"+string(Player.maxhealth))
 draw_set_color(c_white)
 draw_text(67,23,string(Player.myhealth)+"/"+string(Player.maxhealth))
-draw_set_color(c_black)
 draw_set_halign(fa_left)
+draw_set_color(c_white)
+score_show=string_format(score,6, 0)
+score_show=string_replace_all(score_show,' ','0')
+draw_text(32,46,score_show)
 }
 </string>
           </argument>
@@ -322,6 +329,9 @@ draw_set_halign(fa_left)
 if place_meeting(x,y,Player)
 {
 draw_sprite(sprEPickup,-1,x,y-8)
+draw_set_font(fontSM)
+draw_text(x+16,y-8,itemid)
+draw_set_font(font0)
 }}
 </string>
           </argument>
