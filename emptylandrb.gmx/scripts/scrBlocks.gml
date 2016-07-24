@@ -87,6 +87,14 @@ blocksound="soundSolid"
 blockentity=1
 }
 
+if blockid="DungeonGen"{
+blockhealth=-1
+solid=false
+blockcolor=make_colour_rgb(183, 103, 67);
+blocksound="soundSolid"
+blockentity=1
+}
+
 if blockid="Floor"{
 blockhealth=-1
 solid=false

@@ -61,6 +61,29 @@ speed=0}
 if direction!=point_direction(x,y,Cursor.x,Cursor.y){
 direction=point_direction(x,y,Cursor.x,Cursor.y)
 }
+
+if place_meeting(x,y,ItemPickup){
+
+if keyboard_check_pressed(ord("E")){
+with instance_create(x+4,y+4,ItemPickup)
+{
+itemid = Control.itemid
+itemspritename = asset_get_index("sprItem" + itemid);
+sprite_index=itemspritename
+}
+
+Control.itemid=instance_nearest(x, y, ItemPickup).itemid
+with instance_nearest(x, y, ItemPickup){
+instance_destroy()
+
+
+}
+}
+}
+
+if myhealth&lt;=0{
+game_end()
+}
 </string>
           </argument>
         </arguments>
@@ -106,7 +129,8 @@ direction=point_direction(x,y,Cursor.x,Cursor.y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(ord("E")){
+            <string>/*
+if keyboard_check_pressed(ord("E")){
 with instance_create(x+4,y+4,ItemPickup)
 {
 itemid = Control.itemid
@@ -121,6 +145,7 @@ instance_destroy()
 
 }
 }
+*/
 </string>
           </argument>
         </arguments>

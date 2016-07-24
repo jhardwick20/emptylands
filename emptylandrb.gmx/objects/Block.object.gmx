@@ -132,6 +132,11 @@ instance_create(x,y,Chest)
 instance_destroy()
 }
 
+if blockid="DungeonGen"{
+instance_create(x,y,DungeonGen)
+instance_destroy()
+}
+
 if blockid="FloorGen"{
 instance_create(x,y,FloorGen)
 instance_destroy()

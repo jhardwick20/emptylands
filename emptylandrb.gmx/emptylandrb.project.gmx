@@ -24,6 +24,7 @@
       <sprite>sprites\sprBlockTurtle</sprite>
       <sprite>sprites\sprBlockEnemyMan</sprite>
       <sprite>sprites\mskBlock</sprite>
+      <sprite>sprites\sprBlockDungeonGen</sprite>
       <sprite>sprites\sprBlockPlaceholder</sprite>
     </sprites>
     <sprites name="HUD">
@@ -41,6 +42,7 @@
       <sprite>sprites\sprItemBow</sprite>
       <sprite>sprites\sprSwing</sprite>
       <sprite>sprites\sprItemFlesh</sprite>
+      <sprite>sprites\sprItemDust</sprite>
     </sprites>
     <sprites name="NPCs">
       <sprite>sprites\sprTurtle</sprite>
@@ -90,6 +92,7 @@
       <object>objects\Slots</object>
       <object>objects\ItemPickup</object>
       <object>objects\TurfGen</object>
+      <object>objects\DungeonGen</object>
     </objects>
     <objects name="Entities">
       <object>objects\Block</object>
@@ -97,9 +100,9 @@
       <object>objects\Water</object>
       <object>objects\EnemyMan</object>
       <object>objects\Floor</object>
-      <object>objects\BowMan</object>
       <object>objects\EnemyArrow</object>
       <object>objects\Turtle</object>
+      <object>objects\BowMan</object>
     </objects>
   </objects>
   <rooms name="rooms">
